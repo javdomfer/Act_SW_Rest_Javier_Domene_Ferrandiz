@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles del Personaje</title>
+    <base href="/">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div>
+        <h1><%= character.name %></h1>
+        <img src="<%= character.photo %>" alt="<%= character.name %>" width="200">
+        <div>
+            <span> <b>Nombre:</b> <%= character.name %></span>
+            <span> <b>Altura:</b> <%= character.height %></span>
+            <span> <b>Peso:</b> <%= character.mass %></span>
+        </div>
+        <% if (planet) { %>
+            <div>
+                <h2>Planeta natal</h2>
+                <span> <b>Nombre:</b> <%= planet.name %></span>
+                <span> <b>Rotación:</b> <%= planet.rotation_period %></span>
+                <span> <b>Órbita:</b> <%= planet.orbital_period %></span>
+            </div>
+        <% } %>
+        <a href="/starwars/<%= character.name.split(" ")[0] %>/edit"><button type="button">EDITAR</button></a>
+        <form action="/starwars/<%= character.name.split(" ")[0] %>?_method=DELETE" method="POST">
+            <button type="submit">ELIMINAR</button>
+        </form>
+    </div>
+
+    <a href="/starwars">Volver al listado</a>
+    <a href="/">Volver al buscador</a>
+</body>
+</html>
